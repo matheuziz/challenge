@@ -1,0 +1,17 @@
+class CreateOrders < ActiveRecord::Migration[6.0]
+  def change
+    create_table :orders do |t|
+      t.string :reference
+      t.string :purchase_channel
+      t.string :client_name
+      t.string :address
+      t.string :delivery_service
+      t.integer :total_value_cents
+      t.json :line_items, array: true
+      t.integer :status
+      t.references :batch, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
