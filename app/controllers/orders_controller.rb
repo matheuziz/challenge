@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   # POST /orders/create
   def create
     order = Order.new(order_params)
@@ -17,5 +18,4 @@ class OrdersController < ApplicationController
       :delivery_service, :status, :total_value, line_items: []
     )
   end
-
 end
