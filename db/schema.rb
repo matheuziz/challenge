@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_221312) do
     t.string "client_name"
     t.string "address"
     t.string "delivery_service"
-    t.integer "total_value_cents", default: 0
+    t.string "total_value"
     t.json "line_items", array: true
     t.integer "status"
     t.bigint "batch_id"
