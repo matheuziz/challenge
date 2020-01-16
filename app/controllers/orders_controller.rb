@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   # POST /orders/create
   def create
     order = Order.new(order_params)
@@ -15,18 +14,23 @@ class OrdersController < ApplicationController
   # Returns only the last order for queries by client_name
   def status
     order = if params['client'] == 'true'
-              Order.where(client_name: params['identifier'])
-                   .order(created_at: :asc)
-                   .last
+              Order.last_by_client(params['identifier'])
             else
               Order.find_by(reference: params['identifier'])
             end
-    render json: { status: order.status }, status: :ok
+
+    if order.nil?
+      head :no_content, type: 'application/json'
+    else
+      render json: { reference: order.reference, status: order.status }
+    end
   end
 
   # GET /orders/list/:purchase_channel
   def list
-    render json: Order.where(purchase_channel: params['purchase_channel']),
+    render json: {
+      orders: Order.where(purchase_channel: params['purchase_channel'])
+    },
            status: :ok
   end
 
