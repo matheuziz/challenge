@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     if order.save
-      render json: { created_order: order }, status: :created
+      render json: { order: order }, status: :created
     else
       render json: { errors: order.errors }, status: :unprocessable_entity
     end
@@ -37,9 +37,9 @@ class OrdersController < ApplicationController
 
   def render_status(order)
     if order.nil?
-      head :no_content, type: 'application/json'
+      render json: { errors: { order: 'not found' } }, status: :not_found
     else
-      render json: { reference: order.reference, status: order.status },
+      render json: { order: { status: order.status } },
              status: :ok
     end
   end
