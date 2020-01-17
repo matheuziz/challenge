@@ -49,12 +49,13 @@ Returns the status for the order with this *:reference*, status code *200 - Ok* 
 
 ### GET /orders/status/client/:client_name
 
-Returns the status for the **last** order with this *:client_name*, status code *200 - Ok* on success
+Returns the status for the **latest** order with this *:client_name*, status code *200 - Ok* on success
 
 **Example**
 ```yaml
 {
     "order": {
+        "reference": "BR112233",
         "status": "sent"
     }
 }
