@@ -6,9 +6,9 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
 
-  test 'should return no content for status by non-existent reference' do
+  test 'should return not_found for status by non-existent reference' do
     get order_reference_status_path('DOESNOTEXIST')
-    assert_response :no_content
+    assert_response :not_found
   end
 
   test 'should return ok for order status by client_name' do
@@ -16,9 +16,9 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
 
-  test 'should return no content for status by non-existent client_name' do
+  test 'should return not_found for status by non-existent client_name' do
     get order_client_status_path('DOESNOTEXIST')
-    assert_response :no_content
+    assert_response :not_found
   end
 
   test 'list should always return ok' do

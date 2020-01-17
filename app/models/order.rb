@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :batch, optional: true
   enum status: %i[ready production closing sent]
+
   validates :reference, :purchase_channel, :client_name, :address,
             :delivery_service, :total_value, :line_items, presence: true
 

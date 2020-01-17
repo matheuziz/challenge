@@ -5,15 +5,27 @@ one:
   purchase_channel: CHAN
   client_name: NAME1
   address: MyString
-  delivery_service: MyString
+  delivery_service: DHL
   total_value: MyString
-  status: 
+  line_items: ['a']
+  status: 0
 
 two:
   reference: UNIQUEREF2
   purchase_channel: CHAN
   client_name: NAME2
   address: MyString
+  delivery_service: DHL
+  total_value: MyString
+  line_items: ['b']
+  status: 0
+
+three:
+  reference: UNIQUEREF3
+  purchase_channel: NOPE
+  client_name: NAME3
+  address: MyString
   delivery_service: MyString
   total_value: MyString
-  status: 
+  line_items: ['c']
+  status: 0
